@@ -7,3 +7,10 @@ class MyClass:
 
 MyClass.i
 MyClass.f
+
+
+for index in range(len(words)):
+            print ('current word :', words[index])
+
+for word in words:
+            print ('current word :', word)
