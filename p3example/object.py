@@ -1,4 +1,4 @@
-class MyClass:
+lass MyClass:
     """A simple example class"""
     i = 12345
 
