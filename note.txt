@@ -1,0 +1,1 @@
+discord.py uses asyncio, which is mostly baked into python. disco uses greenlets (green threads) internally afaik, which is provided by the gevent library.
