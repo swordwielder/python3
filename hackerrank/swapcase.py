@@ -11,7 +11,7 @@ if __name__ == '__main__':
 def swap_case(s):
     a = ""
     for let in s:
-        if let.isupper() == True:
+        if let.isupper():
             a+=(let.lower())
         else:
             a+=(let.upper())
