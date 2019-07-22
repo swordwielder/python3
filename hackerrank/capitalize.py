@@ -14,6 +14,8 @@ def solve(s):
     for i in name:
         capname+=i.capitalize()+" "
     return capname
+
+    return(string.capwords(s, ' '))
     
 
 if __name__ == '__main__':
