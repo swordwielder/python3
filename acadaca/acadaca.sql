@@ -38,3 +38,9 @@ INSERT INTO `movie_returns` VALUES
 
 INSERT INTO `movie_returns` VALUES
 (4,'42nd Street', 2,399,22);
+
+SELECT theatre, num_tickets_sold, title FROM movie_returns JOIN movies ON movies.id=movie_returns.movie_id ORDER BY num_tickets_sold ASC;
+
+SELECT theatre, num_tickets_sold, title FROM movie_returns JOIN movies ON movies.id=movie_returns.movie_id ORDER BY num_tickets_sold ASC;
+
+SELECT title, SUM(dollar_amount_made) FROM movies JOIN movie_returns ON movies.id=movie_returns.movie_id GROUP BY movie_id ORDER BY year_released ASC;
