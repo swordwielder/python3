@@ -93,11 +93,18 @@ class Player_Stats:
         return f'{self.id},{self.game},{self.player_id},{self.team_id},{self.team_id},{self.points},{self.assists},{self.rebounds},{self.nerd}'
 
 class Game_State:
-    def __init__(self,id):
+    def __init__(self,id,game_id,home_team_score,away_team_score,broadcast,quarter,time_left_in_quarter,game_status):
         self.id=id
+        self.game_id=game_id
+        self.home_team_score=home_team_score
+        self.away_team_score=away_team_score
+        self.broadcast=broadcast
+        self.quarter=quarter
+        self.time_left_in_quarter=time_left_in_quarter
+        self.game_status=game_status
 
     def __str__(self):
-        return f'{self.id}'
+        return f'{self.id},{self.game_id},{self.home_team_score},{self.away_team_score},{self.broadcast},{self.quarter},{self.time_left_in_quarter},{self.game_status}'
 
 
 with open(os.getcwd()+'/data.json' ,'r') as jsonfile:
