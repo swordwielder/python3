@@ -7,7 +7,36 @@ import _sqlite3
 import sqlite3
 from _sqlite3 import Error, DatabaseError
 from decimal import Decimal
+import time
+from selenium import webdriver
 
+driver = webdriver.Chrome()
+driver.implicitly_wait(30)
+
+try:
+    SCROLL_PAUSE_TIME = 0.5
+    driver.get("https://www.coinbase.com/price")
+
+    last_height = driver.execute_script("return document.body.scrollHeight")
+    start=time.time()
+    while True:
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight-500);")
+        time.sleep(SCROLL_PAUSE_TIME)
+        new_height = driver.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
+            end=time.time()
+            print(end-start)
+            print("possible end")
+            break
+        last_height = new_height
+
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+
+    for c in soup("h2"):
+        print(c.get_text())
+
+finally:
+    driver.quit()
 
 # import mysql.connector
 # from mysql.connector import Error
