@@ -3,10 +3,8 @@
 
 def solution(A):
     # write your code in Python 3.6
-
     num = 1
     A.sort()
-    
     if 1 not in A:
         return 1
     if A[len(A)-1] < 1:
