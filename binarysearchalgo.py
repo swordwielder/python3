@@ -11,11 +11,11 @@ arr =   [1, 7, 9, 12, 16, 17, 18, 19, 20, 22, 26, 27, 32, 33, 34, 36, 41, 43, 49
 
 # arr=[32, 33]
 # #    L    U
-# #    M  
-# arr=[33]
-# #    L   
 # #    M
-# #      
+# arr=[33]
+# #    L
+# #    M
+# #
 
 
 # is 33 in array
@@ -40,7 +40,7 @@ def binarySearch2(num2find, arr):
                 u = mid+1
     return False
 
-def binarySearch3(num2find, arr):
+def binarySearch(num2find, arr):
     low=0
     high=len(arr)-1
     a=arr
@@ -55,8 +55,8 @@ def binarySearch3(num2find, arr):
             return True
     return False
 
-     
+
 
 # print(findElement(13,arr))
 print(binarySearch(7,arr))
-# check to see 
+# check to see
