@@ -1,6 +1,8 @@
 
 def longestCommonPrefix(strs):
     l=list(zip(*strs))
+    print(list(zip(*strs)))
+    print(l)
     check =""
     if not strs:
         return ""
@@ -15,6 +17,7 @@ def longestCommonPrefix(strs):
 def longestCommonprefixes(strs):
 
     strs.sort(key=lambda x:len(x))
+    print(strs)
     prefix=""
     for i in range(len(strs[0])):
         if all(x[:i+1] == strs[0][:i+1] for x in strs):
@@ -25,7 +28,7 @@ def longestCommonprefixes(strs):
 
 
 if __name__ == '__main__':
-    print(longestCommonPrefix(["flow","flower","flag","fl"]))
+    print(longestCommonprefixes(["flow","flower","flag","fa"]))
 
  #
  # check =""
