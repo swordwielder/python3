@@ -17,7 +17,7 @@ print("COLUMNS:")
 for index in range(m):
     count=0
     for line in store:
-        
+
         if line[index] == '*':
             count+=1
     print(count)
