@@ -8,15 +8,15 @@ class Solution:
                 if len(a)==0:
                     return False
                 b=a.pop()
-                if i==')':
-                    if b!='(':
-                        return False;
-                elif i==']':
-                    if b!='[':
-                        return False;
-                elif i=='}':
-                    if b!='{':
+                if i==')' and b!='(':
+                    return False;
+                elif i==']' and b!='[':
+                    return False;
+                elif i=='}' and b!='{':
                         return False;
         if len(a)!=0:
             return False
         return True
+b=Solution()
+
+print(b.isValid("[][]()()(())"))
