@@ -1,9 +1,25 @@
+
+meetings=[  [
+    (2, 3),
+    (6, 7)
+  ],
+  [
+    (1, 4),
+    (5, 6)
+  ],
+  [
+    (1, 2),
+    (6, 7),
+    (8, 9)
+  ]
+]
+
 def solution(x):
     a=[]
-    
+
     for i in range(len(x)):
         for j in range(len(x[i])):
-            a.append(x[i][j])    
+            a.append(x[i][j])
     a.sort()
     print(a)
     cv=a[0][1]
