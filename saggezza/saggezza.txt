@@ -1,0 +1,202 @@
+/*
+CoderPad provides a basic SQL sandbox with the following schema.
+You can also use commands like `show tables` and `desc employees`
+
+employees                             projects
++---------------+---------+           +---------------+---------+
+| id            | int     |<----+  +->| id            | int     |
+| first_name    | varchar |     |  |  | title         | varchar |
+| last_name     | varchar |     |  |  | start_date    | date    |
+| salary        | int     |     |  |  | end_date      | date    |
+| department_id | int     |--+  |  |  | budget        | int     |
++---------------+---------+  |  |  |  +---------------+---------+
+                             |  |  |
+departments                  |  |  |  employees_projects
++---------------+---------+  |  |  |  +---------------+---------+
+| id            | int     |<-+  |  +--| project_id    | int     |
+| name          | varchar |     +-----| employee_id   | int     |
++---------------+---------+           +---------------+---------+
+*/
+
+# SELECT e.first_name, e.last_name, e.salary,
+#   d.name as department_name
+# FROM employees   AS e
+# JOIN departments AS d ON e.department_id = d.id;
+# CREATE TABLE IF NOT EXISTS companies (name varchar(32), country varchar(50), PRIMARY KEY(name));
+
+# CREATE TABLE IF NOT EXISTS trades (id INT, seller varchar(32), buyer varchar(32), value INT, PRIMARY KEY (id), FOREIGN KEY (seller) REFERENCES companies (name), FOREIGN KEY (buyer) REFERENCES companies (name));
+
+# INSERT INTO companies VALUES ('Alice s.p.', 'Wonderland');
+# INSERT INTO companies VALUES ('Y-zap', 'Wonderland');
+# INSERT INTO companies VALUES ('Absolute', 'Mathlands');
+# INSERT INTO companies VALUES ('Arcus t.g.', 'Mathlands');
+# INSERT INTO companies VALUES ('Lil Mermaid', 'Underwater Kingdom');
+# INSERT INTO companies VALUES ('None at all', 'Nothingland');
+
+# INSERT INTO trades VALUES (20121107, 'Lil Mermaid', 'Alice s.p.', 10);
+# INSERT INTO trades VALUES (20123112, 'Arcus t.g.', 'Y-zap', 30);
+# INSERT INTO trades VALUES (20120125, 'Alice s.p.', 'Arcus t.g.', 100);
+# INSERT INTO trades VALUES (20120216, 'Lil Mermaid', 'Absolute', 30);
+# INSERT INTO trades VALUES (20120217, 'Lil Mermaid', 'Absolute', 50);
+
+
+# SELECT a.country, export, import FROM (SELECT country, IFNULL(SUM(VALUE), 0) AS export
+#                                         FROM companies LEFT JOIN trades ON name = seller GROUP BY country) AS a
+#                                  LEFT JOIN
+#                                       (SELECT country, IFNULL(SUM(VALUE), 0) AS import
+#                                       FROM companies LEFT JOIN trades ON name = buyer GROUP BY country) AS b
+#                                  ON a.country = b.country;
+
+
+
+
+SELECT nm.country,
+       IFNULL(SUM(TdS.value), 0) AS Export,
+       IFNULL(SUM(TdB.value),0) AS Import
+FROM companies nm
+    LEFT JOIN trades TdS
+        ON TdS.seller = nm.name
+    LEFT JOIN trades TdB
+        ON TdB.buyer = nm.name
+GROUP BY nm.country;
+
+
+/* 
+Your previous Java content is preserved below:
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+  public static void main(String[] args) {
+    ArrayList<String> strings = new ArrayList<String>();
+    strings.add("Hello, World!");
+    strings.add("Welcome to CoderPad.");
+    strings.add("This pad is running Java " + Runtime.version().feature());
+
+    for (String string : strings) {
+      System.out.println(string);
+    }
+  }
+}
+
+
+/* 
+Your previous Python 3 content is preserved below:
+
+def say_hello():
+    print('Hello, World')
+
+for i in range(5):
+    say_hello()
+
+
+# 
+# Your previous MySQL content is preserved below:
+# 
+# 
+# select * from trades;
+# 
+# select * from companies;
+# 
+# select country, export, import from (select country, IFNULL(
+# 
+# 
+# #companies
+# # +-------------+--------------------+
+# # | name        | country            |
+# # +-------------+--------------------+
+# # | Absolute    | Mathlands          |
+# # | Alice s.p.  | Wonderland         |
+# # | Arcus t.g.  | Mathlands          |
+# # | Lil Mermaid | Underwater Kingdom |
+# # | None at all | Nothingland        |
+# # | Y-zap.      | Wonderland         |
+# # +-------------+--------------------+
+# #
+# # trades
+# # +----+-------------+------------+-------+
+# # | id | seller      | buyer      | value |
+# # +----+-------------+------------+-------+
+# # |  1 | Lil Mermaid | Alice s.p. |    10 |
+# # |  2 | Arcus t.g.  | Y-zap.     |    30 |
+# # |  3 | Alice s.p.  | Arcus t.g. |   100 |
+# # |  4 | Lil Mermaid | Absolute   |    30 |
+# # |  5 | Lil Mermaid | Absolute   |    50 |
+# # +----+-------------+------------+-------+
+# # 
+# # # Output
+# # # The Requirement
+# # +--------------------+--------+--------+
+# # | country     | export | import |
+# # +--------------------+--------+--------+
+# # | Mathlands   | 30     | 180   |
+# # | Nothingland | 0      | 0      |
+# # | Underwater  | 90     | 0      |
+# # | Wonderland  | 100    | 40     |
+# # +--------------------+--------+--------+
+# 
+# 
+# 
+# 
+# /* 
+# Your previous Python 3 content is preserved below:
+# 
+# # Sample Input:
+# # # {[()]}
+# # # {[(])}
+# # # {{[[(())]]}}
+# # # {[[}]}
+# # # ({}[]()))
+# # # Sample Output
+# # # YES
+# # # NO
+# # # YES
+# # # NO
+# ## [{()}](
+# 
+# 
+# def solution(x):
+#     
+#     stack=[]
+#     for i in range(len(x)):
+#         if x[i]=='(' or x[i]=='[' or x[i]=='{':
+#             stack.append(x[i])
+#         else:
+#             
+#             if len(stack)==0:
+#                 return 'NO'
+#             popped=stack.pop()
+#             
+#             if x[i]==')':
+#                 if popped!='(':
+#                     return 'NO'
+#             if x[i]==']':
+#                 if popped!='[':
+#                     return 'NO'
+#             if x[i]=='}':
+#                 if popped!='{':
+#                     return 'NO'
+#     
+#     if len(stack)>0:
+#         return 'NO'
+#     return 'YES'
+#     
+#             
+#         
+#     
+#     
+# 
+# a="[{{{}}}"
+# print(solution(a))
+#  */
+
+ */
+ */

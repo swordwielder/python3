@@ -2,7 +2,7 @@ class Solution:
     def isValid(self, s: str) -> bool:
         a=[]
         for i in s:
-            if i=='(' or i =='[' or i=='{':
+            if i in '[({':
                 a.append(i)
             else:
                 if len(a)==0:
@@ -19,4 +19,4 @@ class Solution:
         return True
 b=Solution()
 
-print(b.isValid("[][]()()(())"))
+print(b.isValid("[][]()()(())["))
