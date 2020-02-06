@@ -3,3 +3,9 @@ b=0
 for i in range(1,n+1):
     b+=m*i
 print(0 if b<=a else b-a)
+
+
+def Solution():
+	m,a,n=map(int,input().split())
+	n=m*n*-~n//2
+	print([n-a,0][n<a])
