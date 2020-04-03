@@ -1,0 +1,20 @@
+print('what is the name of the file you want to save')
+filename=input()
+answer ='y'
+print('please enter the items, prices and quantity of your inventory')
+print('this program will save your information in a file')
+
+while(answer=='y'):
+    print('enter the name of the item')
+    name =input()
+    print('enter the price')
+    price=input()
+    print('enter the number in stock')
+    stock = input()
+    print('do you want to enter another item? (enter y/n)')
+    answer=input()
+    f= open(filename,"w+")
+    f.write(name+'\n')
+    f.write(price+'\n')
+    f.write(stock+'\n')
+f.close()
