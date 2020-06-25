@@ -18,13 +18,30 @@ def solution(A):
         return num+1
 
 
-def solution(a):
+def solution2(a):
     # write your code in Python 3.6
     A = set(a)
     ans = 1
     while ans in A:
        ans += 1
     return ans
+
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution3(A):
+    seen = set()
+    for i in A:
+        seen.add(i)
+        
+    ret = 1
+    while True:
+        if ret in seen:
+            ret += 1
+        else:
+            return ret
+    
+        
 
 
 if __name__ == '__main__':
