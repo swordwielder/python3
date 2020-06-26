@@ -1,0 +1,59 @@
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+from extratypes import Tree  # library with types used in the task
+
+
+
+int_min = -2**32
+
+def solution(T):
+    if not T:
+        return 0
+    Hash = {}
+    return longestuniquePath(T,Hash)
+    
+def longestuniquePath(node, m):
+    if not node:
+        return len(m)
+    if node.x in m:
+        m[node.x] += 1
+    else:
+        m[node.x] = 1
+        
+    maxpath = max(longestuniquePath(node.l,m), longestuniquePath(node.r,m))
+
+    m[node.x] -=1
+    if m[node.x]==0:
+        del m[node.x]
+    return maxpath
+    
+# def solution2(T):
+#     root = T
+#     res = [int_min]
+#     maxPathSumUtil(root,res)
+    
+    
+#     return res[0]
+    
+# def maxPathSumUtil(root, res):
+#     head = root
+#     if root is None:
+#         return 0
+#     if root.l is None and root.r is None:
+#         return 1
+        
+#     ls = maxPathSumUtil(root.l, res)
+#     rs = maxPathSumUtil(root.r, res)
+    
+#     if root.l is not None and root.r is not None:
+#         res[0] = max(res[0], ls + rs)
+#         return max(ls, rs)
+        
+        
+#     if root.l is None:
+#         return rs
+#     else:
+#         return ls
+
+#Example from the finding longest distinct path of a binary tree.
