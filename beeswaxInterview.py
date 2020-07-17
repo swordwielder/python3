@@ -64,6 +64,8 @@ def checkCampaign(campaign, startTime, endTime):
         return False
     if endTime >= campaign.startTime and endTime <= campaign.endTime:
         return False
+    if startTime < campaign.startTime and endTime > campaign.endTime:
+        return False
     
     return True
 
