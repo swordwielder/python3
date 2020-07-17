@@ -50,6 +50,13 @@ departments                  |  |  |  employees_projects
 
 
 
+SELECT DISTINCT a.country,
+(SELECT COALESCE(sum(trd.value),0) from trades as trd, companies as cmp where trd.seller = cmp.name and cmp.country = a.country) as export,
+(SELECT COALESCE(sum(trd.value),0) from trades as trd, companies as cmp where trd.buyer = cmp.name and cmp.country = a.country) as import
+FROM companies as a
+ORDER BY 1
+
+
 SELECT nm.country,
        IFNULL(SUM(TdS.value), 0) AS Export,
        IFNULL(SUM(TdB.value),0) AS Import
