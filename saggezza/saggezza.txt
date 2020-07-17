@@ -1,4 +1,8 @@
 /*
+SOLUTION for the question
+http://www.sqlfiddle.com/#!9/14a22e/4
+
+
 CoderPad provides a basic SQL sandbox with the following schema.
 You can also use commands like `show tables` and `desc employees`
 
