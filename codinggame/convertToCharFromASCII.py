@@ -1,4 +1,15 @@
+#solution
+if (len(code) % 3 != 0):
+    print('ERROR')
+else:
+    o = ''
+    for n in range(0, len(code), 3):
+        c = code[n:n+3]
+        o += chr(int(c))
+    print(o)
 
+    
+# not working    
 code = input()
 r=''
 if len(code)<=5:
