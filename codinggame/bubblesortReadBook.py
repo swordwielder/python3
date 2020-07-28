@@ -1,7 +1,15 @@
-import sys
-import math
+
+#solution
+B=[input().split(",") for _ in range(int(input()))]
+T=0
+while B!=sorted(B):
+ for i in range(len(B)-1):
+  a,b=B[i:i+2]
+  if a>b:B[i],B[i+1]=b,a;T+=int(a[1])+int(b[1])
+print(T)
 
 
+#solution 2
 n = int(input())
 a=[]
 books={}
