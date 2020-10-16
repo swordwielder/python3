@@ -14,3 +14,11 @@ n=int(input())
 t=[i for i in input().split()]
 for i in t:
     if t.count(i)==1:print(i)
+
+
+#sol3
+i=input
+n=i()
+s=i().split()
+print([v for v in s if s.count(v) ==1][0])
+
