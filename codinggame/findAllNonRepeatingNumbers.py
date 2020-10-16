@@ -8,3 +8,9 @@ for k,v in a.items():
  if v==1:print(k)
 
 
+#sol2
+
+n=int(input())
+t=[i for i in input().split()]
+for i in t:
+    if t.count(i)==1:print(i)
